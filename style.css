@@ -1,0 +1,403 @@
+body {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  background-color: black;
+  color: white;
+  /* 1,2rem =16px */
+  font-size: 1.2rem;
+}
+
+header {
+  /* border: 1px solid white; */
+  width: 1200px;
+  max-width: 80%;
+  margin: auto;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 999;
+}
+
+header nav {
+  display: flex;
+  gap: 2rem;
+}
+
+header nav a {
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+/* slider */
+
+.slider {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin-top: -50px;
+  /* using relative position to lock the position when using absolute */
+  position: relative;
+}
+
+.slider .list .item {
+  position: absolute;
+  /* top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0; */
+  /* or use inset to fill top bottom right left */
+  inset: 0 0 0 0;
+}
+
+/* .slider .list .item > img = maksudnya akan ambil img setelah item shj..yg img kedua tidak akan dikira ambil */
+.slider .list .item > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider .list .item .detail {
+  position: absolute;
+  /* border: 1px solid black; */
+  top: 20%;
+  width: 1200px;
+  max-width: 80%;
+  margin: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  text-shadow: 0 5px 10px #000;
+}
+
+.slider .list .item .detail .title {
+  font-size: 1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.slider .list .item .detail .name {
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 3.5rem;
+  letter-spacing: 0.1rem;
+  line-height: 3.5rem;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(#f7ba2c, #ea5459);
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+.slider .list .item .detail figure {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.slider .list .item .detail figure img {
+  width: 2.4rem;
+}
+
+.slider .list .item .detail figure figcaption {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+}
+
+.slider .list .item .detail .desc {
+  margin-top: 1rem;
+  font-weight: 100;
+  font-size: 1rem;
+  max-width: 40rem;
+  text-shadow: 1px 1px 1px #000;
+}
+
+.slider .list .item .detail .more {
+  margin-top: 1.4rem;
+  /* need to put inline-block to make it work the margin-top */
+  display: inline-block;
+  text-decoration: none;
+  background-color: #fff;
+  color: #000;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.3rem;
+  text-shadow: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.slider .list .item .detail .more:hover {
+  color: #fff;
+  background-color: red;
+}
+
+/* thumbnail */
+
+.thumbnail {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  width: max-content;
+  z-index: 999;
+  display: flex;
+  gap: 20px;
+}
+
+.thumbnail .item {
+  /* border: 1px solid white; */
+  width: 150px;
+  height: 220px;
+  /* flex-shrink: 0  = supaya img tidak mengecil apbila screen shrink */
+  flex-shrink: 0;
+  position: relative;
+}
+
+.thumbnail .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.thumbnail .item .detail {
+  position: absolute;
+  bottom: 15px;
+  left: 10px;
+  right: 10px;
+}
+
+.thumbnail .item .detail .name {
+  font-weight: 900;
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 1px #000;
+}
+
+.thumbnail .item .detail blockquote {
+  font-size: 0.7rem;
+  font-weight: 100;
+  text-align: center;
+  text-shadow: 1px 1px 1px #000;
+}
+
+/* arrowws */
+
+.arrows {
+  position: absolute;
+  top: 80%;
+  right: 52%;
+  /* border: 1px solid white; */
+  width: 300px;
+  max-width: 30%;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.arrows button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 1px 1px 1px #000;
+  font-family: monospace;
+  color: red;
+  cursor: pointer;
+  z-index: 100;
+  transition: 0.3s;
+}
+
+.arrows button:hover {
+  background-color: red;
+  color: white;
+}
+
+/* starting animation */
+.slider .list .item:nth-child(1) {
+  z-index: 1;
+}
+
+.slider .list .item:nth-child(1) .title,
+.slider .list .item:nth-child(1) .name,
+.slider .list .item:nth-child(1) figure,
+.slider .list .item:nth-child(1) .desc,
+.slider .list .item:nth-child(1) .more {
+  transform: translateY(50px); /* akan naik ke atas bila animation*/
+  filter: blur(50px);
+  opacity: 0;
+  animation: showDetail 0.5s 1s linear 1 forwards;
+}
+
+@keyframes showDetail {
+  to {
+    transform: translateY(0); /* akan naik ke atas bila animation*/
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* klau nak animation satu2 property itu muncul kene set delay */
+.slider .list .item:nth-child(1) .title {
+  animation-delay: 1s;
+}
+.slider .list .item:nth-child(1) .name {
+  animation-delay: 1.2s;
+}
+.slider .list .item:nth-child(1) figure {
+  animation-delay: 1.4s;
+}
+.slider .list .item:nth-child(1) .desc {
+  animation-delay: 1.6s;
+}
+.slider .list .item:nth-child(1) .more {
+  animation-delay: 1.8s;
+}
+
+/* action next for animation button slider */
+.slider.next .list .item:nth-child(1) > img {
+  width: 150px;
+  height: 220px;
+  object-fit: cover;
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  border-radius: 15px;
+  animation: growImage 0.5s linear 1 forwards;
+}
+
+@keyframes growImage {
+  to {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    border-radius: 0;
+    bottom: 0;
+  }
+}
+
+/* animation thumbnail gmbar kecik itu */
+.slider.next .thumbnail .item:nth-last-child(1) {
+  width: 0;
+  overflow: hidden; /* hilangkan textnya*/
+  opacity: 0;
+  animation: showThumbnail 0.5s linear 1 forwards;
+}
+
+@keyframes showThumbnail {
+  to {
+    width: 150px;
+    opacity: 1;
+  }
+}
+
+/* animation thumbnail gmbar ke kiri jika click next button */
+.slider.next .thumbnail {
+  transform: translateX(150px); /* bergerak ke kiri 150px*/
+  animation: transformThumbnail 0.5s linear 1 forwards;
+}
+
+@keyframes transformThumbnail {
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* action previous for animation button slider*/
+
+.slider.prev .list .item:nth-child(2) {
+  z-index: 2;
+}
+
+.slider.prev .list .item:nth-child(2) > img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: shrinkImage 0.5s linear 1 forwards;
+}
+
+@keyframes shrinkImage {
+  to {
+    width: 150px;
+    height: 220px;
+    border-radius: 15px;
+    left: 50%;
+    bottom: 50px;
+  }
+}
+/* next ke kiri */
+/* prev ke kanan */
+/* action previous for animation thumbnail ke kanan */
+.slider.prev .thumbnail .item:nth-child(2) {
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  animation: showThumbnail 0.5s linear 1 forwards;
+}
+
+/* baiki animation list detail for nth(2) */
+
+.slider.prev .list .item:nth-child(2) .title,
+.slider.prev .list .item:nth-child(2) .name,
+.slider.prev .list .item:nth-child(2) figure,
+.slider.prev .list .item:nth-child(2) .desc,
+.slider.prev .list .item:nth-child(2) .more {
+  animation: hideDetail 0.5s 1s linear 1 forwards;
+}
+
+@keyframes hideDetail {
+  to {
+    transform: translateY(-150px);
+    filter: blur(20px);
+    opacity: 0;
+  }
+}
+
+/* action next for animation thumbnail button wait for 2s cannot click the button for temporary 2s after that can click */
+.slider.next .arrows button,
+.slider.prev .arrows button {
+  pointer-events: none; /* cannot click the button (nor cursor pointer allowed)*/
+}
+
+/* initial loading bar with width 0 (mmg takkan nampak sebab width 0%) */
+
+.loading-bar {
+  width: 0%;
+  height: 5px;
+  position: absolute;
+  background-color: #f7ba2c;
+  z-index: 999;
+  top: 0;
+  left: 0;
+}
+
+/* making loading bar width 0 to 100%  animation within 2s*/
+.slider.next .loading-bar,
+.slider.prev .loading-bar {
+  width: 100%;
+  animation: loadingTime 2s linear 1 forwards;
+}
+
+@keyframes loadingTime {
+  to {
+    width: 0;
+  }
+}
+
+/* mobile view */
+@media screen and (max-width: 678px) {
+  .slider .list .item .detail .name {
+    font-size: 2.8rem;
+    line-height: 2.8rem;
+  }
+
+  .slider .list .item .detail .desc {
+    font-size: 1rem;
+  }
+}
